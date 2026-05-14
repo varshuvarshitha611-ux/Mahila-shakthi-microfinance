@@ -1,0 +1,129 @@
+package com.example.myapplication
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+
+class MainActivity : ComponentActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setContent {
+            MahilaShaktiApp()
+        }
+    }
+}
+
+@Composable
+fun MahilaShaktiApp() {
+
+    var name by remember {
+        mutableStateOf("")
+    }
+
+    var income by remember {
+        mutableStateOf("")
+    }
+
+    var loan by remember {
+        mutableStateOf("")
+    }
+
+    var result by remember {
+        mutableStateOf("")
+    }
+
+    MaterialTheme {
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp)
+        ) {
+
+            Text(
+                text = "Mahila Shakti Unnati",
+                style = MaterialTheme.typography.headlineMedium
+            )
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            OutlinedTextField(
+                value = name,
+                onValueChange = {
+                    name = it
+                },
+                label = {
+                    Text("Enter Name")
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            OutlinedTextField(
+                value = income,
+                onValueChange = {
+                    income = it
+                },
+                label = {
+                    Text("Monthly Income")
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            OutlinedTextField(
+                value = loan,
+                onValueChange = {
+                    loan = it
+                },
+                label = {
+                    Text("Loan Amount")
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Button(
+                onClick = {
+
+                    result =
+                        if (income.isNotEmpty() && loan.isNotEmpty()) {
+
+                            val incomeValue = income.toInt()
+                            val loanValue = loan.toInt()
+
+                            if (loanValue <= incomeValue * 10) {
+                                "Loan Approved for $name"
+                            } else {
+                                "Loan Rejected"
+                            }
+
+                        } else {
+                            "Enter all details"
+                        }
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+
+                Text("Check Eligibility")
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Text(
+                text = result,
+                style = MaterialTheme.typography.headlineSmall
+            )
+        }
+    }
+}
