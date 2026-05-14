@@ -177,6 +177,9 @@ fun MahilaShaktiApp() {
         }
     }
 } 
+## Expected output
+<img width="854" height="1842" alt="image" src="https://github.com/user-attachments/assets/76264e8c-d822-4a1a-9e1b-49e2146ebc7d" />
+
 ## Conclusion
 The Mahila Shakti Unnati application is a beginner-friendly Android project developed using Kotlin and Jetpack Compose. It demonstrates how mobile applications can be used to simplify basic financial processes such as loan eligibility checking. The project helps in understanding important Android development concepts like user input handling, state management, UI design, and conditional logic.This application also highlights the idea of supporting women through simple digital financial solutions. Although the current version includes only basic eligibility checking, it can be further improved with advanced features such as AI-based recommendations, Firebase integration, EMI calculation, multilingual support, and secure authentication. Overall, the project provides practical experience in Android app development and serves as a strong foundation for building real-world financial applications
 
